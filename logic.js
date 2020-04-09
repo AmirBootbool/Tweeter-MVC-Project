@@ -49,22 +49,58 @@ const addPost = function (string){
     addPost("2nd dummy post")
     addPost("3rd dummy post")
 
-    console.log("before removing", getPosts())  // print post DB
+    console.log("original DB", getPosts())  // print post DB
 
-const searchAndDeletePost = function (_postsList, postId){
+const searchAndDeletePost = function (_postsList, postID){
         for (let item of _postsList){
             // console.log(item)
             let key = item.id
             // console.log(key)
-        if (key == postId){
-            let index = _postsList.indexOf(item)
+        if (key == postID){
+            let index = _postsList.indexOf(item)  // get the index of the target item in array
             // console.log(index)
             _postsList.splice(index, 1)
         }
     }
 }
-searchAndDeletePost(_postsList, "p3")
-console.log("after removing", getPosts())
+
+// searchAndDeletePost(_postsList, "p3")
+// console.log("after removing", getPosts())
+
+const addComment = function (postID, string){
+     for (item of _postsList){
+         if (postID == item.id){
+             let commentID = item.comments.length + 1
+             commentID = "c"+commentID
+             item.comments.push(string)
+         }
+     }
+}
+
+
+addComment("p2", "this is  a 1st comment to post2")
+console.log(getPosts())
+
+const removeComment = function (postID, commentID){
+    for (item of _postsList){
+        if (postID == item.id){
+            for (comment of item.comments){
+                if comment["commentID"] == commentID{
+                    let index = comments.indexOf(item)  // get the index of the target item in array
+            // console.log(index)
+                    comments.splice(index, 1)
+                }
+
+            commentID = "c"+commentID
+            item.comments.push(string)
+        }
+    }
+}
+
+
+
+
+
 
 
 
