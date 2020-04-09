@@ -70,41 +70,32 @@ const searchAndDeletePost = function (_postsList, postID){
 const addComment = function (postID, string){
      for (item of _postsList){
          if (postID == item.id){
-             let commentID = item.comments.length + 1
-             commentID = "c"+commentID
-             item.comments.push(string)
+             let id = item.comments.length + 1
+             id = "c"+id
+             item.comments.push({"id": id, "text": string})
+             
+
          }
      }
 }
 
 
-addComment("p2", "this is  a 1st comment to post2")
+addComment("p2", "this is  a 4th comment to post2")
 console.log(getPosts())
 
 const removeComment = function (postID, commentID){
     for (item of _postsList){
         if (postID == item.id){
             for (comment of item.comments){
-                if comment["commentID"] == commentID{
-                    let index = comments.indexOf(item)  // get the index of the target item in array
+                if (comment["id"] == commentID){
+                    let index = item.comments.indexOf(comment)  // get the index of the target item in array
             // console.log(index)
-                    comments.splice(index, 1)
+                    item.comments.splice(index, 1)
                 }
-
-            commentID = "c"+commentID
-            item.comments.push(string)
         }
     }
 }
+}
 
-
-
-
-
-
-
-
-              
-
-
-
+// removeComment("p2", "c1")
+console.log("DB after p2-c1 comment  removal", getPosts())
