@@ -1,32 +1,4 @@
-// call the renderPost method from Renderer module, and give as arguments the getPosts property (is it a func?)
-
-// Specifically, we want to add a listener on the following elements:
-
-//tweet button to get post and show it
-
-// $("#post").on('click', function(){
-// let inputText = $("#input").val()
-// alert(inputText)
-
-// invoke addpost
-// should grab the value from the big input and create a new post
-
-
-// })
-
-// remove post button 
-// grab the ID of the post using what you learned about DOM Traversal and invoke the removePost function in your logic module
-
-// $(#??).on('click', ".??", function(){
-//     postID = $(this).egt clickedpost id
-// })
-
-
-// push text to DATA BASE
-
-
-
-
+//  a module to store posts and comments data- return  _posts array
 
 const Tweeter = function () {
     const _posts = [
@@ -60,6 +32,57 @@ const getPosts = function(){
     
 }
 
+let _postsList = []
+
+let postIdCounter = _postsList.length
+
+let counter = 1  // set counter outside of target function to prevent it from loosing count each time the function is called
+
+const addPost = function (string){
+    const add =  function () {
+        counter += 1;
+      }
+    _postsList.push({   id:"p"+counter,
+                        text: string ,
+                        comments:[] })
+                        add() 
+}
+
+const searchAndDeletePost = function (_postsList, postID) {
+    for (let item of _postsList) {
+        let key = item.id
+        if (key == postID) {
+            let index = _postsList.indexOf(item)
+            _postsList.splice(index, 1)
+        }
+    }
+}
+
+const addComment = function (postID, string) {
+    for (item of _postsList) {
+        if (postID == item.id) {
+            let id = item.comments.length + 1
+            id = "c" + id
+            item.comments.push({
+                "id": id,
+                "text": string
+            })
+        }
+    }
+}
+
+const removeComment = function (postID, commentID) {
+    for (item of _postsList) {
+        if (postID == item.id) {
+            for (comment of item.comments) {
+                if (comment["id"] == commentID) {
+                    let index = item.comments.indexOf(comment) /
+                        item.comments.splice(index, 1)
+                }
+            }
+        }
+    }
+}
 
 
 
