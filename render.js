@@ -1,4 +1,4 @@
-
+// add comments to all relvant loops and functions
 
 const Renderer = function(){
     const renderPost = function(posts){
@@ -7,13 +7,13 @@ const Renderer = function(){
             let postBox = $(`<div class='post' data-id = "${post.id}">
             <p class="post-text">${post.text}</p>
             </div>`)
-            $(this).empty()  // do we need to empty post's children even if its created dynamically?
+            // $(this).empty()  // do we need to empty post's children even if its created dynamically?
 
             for (let comment of post.comments){
                 let comBox = $(`<div class="comment" data-id ="${comment.id}">
                 <span class="delete-comment">X</span>
                 <span class="comments">${comment.text}</span>`)
-                $("#posts").append(comBox)  // append to postbox or post ?
+                postBox.append(comBox)  // append to postbox or post ?
 
             }
 
