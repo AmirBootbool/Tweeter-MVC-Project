@@ -66,8 +66,8 @@ const removeComment = function (postID, commentID) {
         if (postID == item.id) {
             for (comment of item.comments) {
                 if (comment["id"] == commentID) {
-                    let index = item.comments.indexOf(comment) /
-                        item.comments.splice(index, 1)
+                    let index = item.comments.indexOf(comment);
+                    item.comments.splice(index, 1)
                 }
             }
         }
@@ -101,6 +101,19 @@ console.log("DB after 2 posts added", twit.getPosts())
 twit.addComment("p1" , "new comment to post 1")
 
 console.log("DB after 1 comment to 1st post", twit.getPosts())
+
+// twit.searchAndDeletePost("p1")  // not working - fix error
+
+// console.log("remove post 1", twit.getPosts())
+
+// twit.removeComment("p1", "c1")
+// console.log("DB after remove 1st comment from 1st post", twit.getPosts())
+
+
+
+
+
+
 
 
 
