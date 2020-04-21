@@ -91,23 +91,23 @@ const getPosts = function(){
 
 let twit = Tweeter()
 
-// testing all methods
+// Testing all methods
 
-console.log("DB at start", twit.getPosts())
-twit.addPost("this is a test post added")  // check addition and id correct
-twit.addPost("this is a 2nd test post added")  // check addition and id correct
-console.log("DB after 2 posts added", twit.getPosts())
+// console.log("DB at start", twit.getPosts())
+// twit.addPost("this is a test post added")  // check addition and id correct
+// twit.addPost("this is a 2nd test post added")  // check addition and id correct
+// console.log("DB after 2 posts added", twit.getPosts())
 
-twit.addComment("p1" , "new comment to post 1")
+// twit.addComment("p1" , "new comment to post 1")
 
-console.log("DB after 1 comment to 1st post", twit.getPosts())
+// console.log("DB after 1 comment to 1st post", twit.getPosts())
 
 // twit.searchAndDeletePost("p1")  // not working - fix error
 
 // console.log("remove post 1", twit.getPosts())
 
 // twit.removeComment("p1", "c1")
-// console.log("DB after remove 1st comment from 1st post", twit.getPosts())
+console.log("check posts DB after posting in input box + button", twit.getPosts())
 
 
 
