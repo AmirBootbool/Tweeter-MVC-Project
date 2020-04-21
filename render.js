@@ -1,16 +1,22 @@
-// add comments to all relvant loops and functions
+// add comments to all relevant loops and functions
+
+// main render module 
 
 const Renderer = function(){
     const renderPost = function(posts){
         $("#posts").empty()  // empty old render elements before loading new ele'
-        for (let post of posts) {
-            let postBox = $(`<div class='post' data-id = "${post.id}">
+
+        for (let post of posts) {  
+            let postBox = $(`<div class='post' data-id = "${post.id}">  
             <p class="post-text">${post.text}</p>
             </div>`)
+
+            // create delete post button 
+            
             const deletePost = $(`<div class="delete">Delete Post</div>`);
         $(postBox).append(deletePost);
-            
-            // $(this).empty()  // do we need to empty post's children even if its created dynamically?
+
+        // create a new comment element and delete comment button
 
             for (let comment of post.comments){
                 let comBox = $(`<br><div class="comment" data-id ="${comment.id}">
@@ -20,20 +26,16 @@ const Renderer = function(){
             }
             $("#posts").append(postBox)  // append post and its comments 
     }
+
     // create new comment input space and button
 
         const addCommentBox = $(`<br><input class = "comInput" type="text" placeholder="wanna add your comment?">
         <button class="comBtn">COMMENT</button><br><br>`);
-        $(".post").append(addCommentBox);
-
-// create delete post button 
-
-        
-           
+        $(".post").append(addCommentBox);  
     }
 
     return {
-        renderPost: renderPost}
+        renderPost: renderPost} // expose renderpost
 }
 
 

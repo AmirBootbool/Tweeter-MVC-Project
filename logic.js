@@ -1,8 +1,8 @@
-//  a module to store posts and comments data- return  _posts array
-// add spaces where needed and new lines space for readability
+//  a module to serve as our database and useful methods
+
 
 const Tweeter = function () {
-    const _posts = [
+    const _posts = [  // posts and comments data base
         {
             id: "p1",
             text: "First post!",
@@ -22,11 +22,14 @@ const Tweeter = function () {
             ]
         }
     ]
+
+
 // available methods of Tweeter 
 
-// let postIdCounter = _posts.length
 
-let postsCounter = _posts.length+1  // set counter outside of target function 
+let postsCounter = _posts.length+1  // counter for number of posts already stored
+ 
+// add a new post function by accepting a new string from user
 
 const addPost = function (string){
     const add =  function () {
@@ -38,6 +41,9 @@ const addPost = function (string){
                         add() 
 }
 
+
+// delete a post by its ID tag
+
 const searchAndDeletePost = function (_posts, postID) {
     for (let item of _posts) {
         let key = item.id
@@ -47,6 +53,8 @@ const searchAndDeletePost = function (_posts, postID) {
         }
     }
 }
+
+// add a new comment string from user, to an existing post
 
 const addComment = function (postID, string) {
     for (item of _posts) {
@@ -61,6 +69,9 @@ const addComment = function (postID, string) {
     }
 }
 
+// remove a  comment by its ID and its post ID
+
+
 const removeComment = function (postID, commentID) {
     for (item of _posts) {
         if (postID == item.id) {
@@ -73,6 +84,8 @@ const removeComment = function (postID, commentID) {
         }
     }
 }
+
+// retrieve the current posts and comments data base
 
 const getPosts = function(){
     return _posts
@@ -89,7 +102,9 @@ const getPosts = function(){
 }
 
 
-let twit = Tweeter()
+// Testing functions ##########
+
+// let twit = Tweeter()
 
 // Testing all methods
 
@@ -107,7 +122,7 @@ let twit = Tweeter()
 // console.log("remove post 1", twit.getPosts())
 
 // twit.removeComment("p1", "c1")
-console.log("check posts DB after posting in input box + button", twit.getPosts())
+// console.log("check posts DB after posting in input box + button", twit.getPosts())
 
 
 

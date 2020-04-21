@@ -1,36 +1,41 @@
+// assign var names to main modules
+
 const tweeter = Tweeter()
 const renderer = Renderer()
 
 renderer.renderPost(tweeter.getPosts())
 
 
-// adding event listeners per button
+// Adding event listeners per button
+
+// adding new post
 
 $("#post").on('click', function(){
-    let tweet = $("#input").val()  // get new tweet text from input field- GO
+    let tweet = $("#input").val()  
     tweeter.addPost(tweet)
-    renderer.renderPost(tweeter.getPosts())  
-
-    // console.log(tweet)
-    console.log(tweeter.getPosts())
+    renderer.renderPost(tweeter.getPosts())  // re-render after changes were made to DB
 })
+
+// delete post 
 
 $("#posts").on('click', ".delete", function(){
     let delPostId = $(this).closest("div.post").data().id
-    tweeter.searchAndDeletePost(tweeter.getPosts(), delPostId)  // call to delete post func from module
+    tweeter.searchAndDeletePost(tweeter.getPosts(), delPostId)  
     renderer.renderPost(tweeter.getPosts())
-    console.log("show posts after delete post pressed", tweeter.getPosts())  // removes post from array- go
     
 })
+
+// add new comment
 
 $("#posts").on('click', ".comBtn" ,  function(){
     let newComment = $(this).closest(".post").find(".comInput").val() 
     let postID = $(this).closest("div.post").data().id
     tweeter.addComment(postID, newComment)
     renderer.renderPost(tweeter.getPosts())
-    console.log("check insertion of new comment text", "new comment is:", newComment, tweeter.getPosts())
 
 })
+
+// delete comment
 
 $("#posts").on('click', ".delete-comment", function(){
     let commentID = $(this).closest("div.comment").data().id
@@ -42,12 +47,6 @@ $("#posts").on('click', ".delete-comment", function(){
 })
 
 
-// When the Delete Post button is clicked, grab the ID of the post using what you learned about DOM Traversal and invoke the removePost function in your logic module
-
-
-
-// Notice that you already have an addPost function in your Tweetermodule - invoke it!
-// When the Delete Post button is clicked, grab the ID of the post using what you learned about DOM Traversal and invoke the removePost function in your logic module
 
 
 
